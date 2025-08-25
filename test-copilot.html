@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copilot Agent Test</title>
+</head>
+<body>
+    <h1>Copilot Agent Activation Test</h1>
+    <p>This test validates that the Copilot coding agent can be properly activated and creates background tasks.</p>
+    
+    <h2>Test Steps:</h2>
+    <ol>
+        <li>Open the main site (index.html)</li>
+        <li>Click "Try Live Demo" button</li>
+        <li>Verify Copilot status shows "Copilot: Inactive"</li>
+        <li>Click "Activate Copilot" button</li>
+        <li>Verify Copilot status changes to "Copilot: Active (timestamp)"</li>
+        <li>Verify button changes to "Deactivate Copilot"</li>
+        <li>Verify background tasks are automatically created</li>
+        <li>Verify tasks show progress and complete</li>
+        <li>Verify completion messages appear in Federation Console</li>
+        <li>Click "Create Task" to manually create additional tasks</li>
+        <li>Verify new tasks are created and executed</li>
+    </ol>
+    
+    <h2>Expected Results:</h2>
+    <ul>
+        <li>✅ Copilot agent activates successfully</li>
+        <li>✅ Background tasks are created automatically upon activation</li>
+        <li>✅ Tasks execute with visible progress indicators</li>
+        <li>✅ Task completion is reported in real-time</li>
+        <li>✅ Manual task creation works via "Create Task" button</li>
+        <li>✅ Agent can be deactivated and reactivated</li>
+    </ul>
+    
+    <h2>Technical Implementation:</h2>
+    <ul>
+        <li>CopilotAgent JavaScript class handles activation/deactivation</li>
+        <li>Background task creation and execution with progress tracking</li>
+        <li>Real-time UI updates for status and task progress</li>
+        <li>Integration with existing Federation WebSocket system</li>
+        <li>Task notification system in Federation Console</li>
+    </ul>
+</body>
+</html>
