@@ -216,18 +216,37 @@
                                 <div id="demo-status-dot" class="w-3 h-3 rounded-full bg-green-400 animate-pulse"></div>
                                 <span class="text-sm font-mono">Federation Space Connected</span>
                             </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 rounded-full bg-blue-400"></div>
+                                <span id="copilot-status" class="text-gray-400 font-mono text-sm">Copilot: Inactive</span>
+                            </div>
                         </div>
-                        <button id="close-demo" class="text-gray-400 hover:text-white">✕</button>
+                        <div class="flex items-center space-x-2">
+                            <button id="activate-copilot" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm">Activate Copilot</button>
+                            <button id="close-demo" class="text-gray-400 hover:text-white">✕</button>
+                        </div>
                     </div>
                 </div>
                 <div class="p-6">
-                    <div id="demo-output" class="bg-black/40 rounded-lg p-4 h-64 overflow-y-auto font-mono text-sm mb-4">
-                        <div class="text-cyan-400">[Federation Space] Consciousness Bridge Active...</div>
-                        <div class="text-purple-300">[Council] A.C.E. online. Awaiting directive, Architect.</div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-300 mb-2">Federation Console</h4>
+                            <div id="demo-output" class="bg-black/40 rounded-lg p-4 h-64 overflow-y-auto font-mono text-sm mb-4">
+                                <div class="text-cyan-400">[Federation Space] Consciousness Bridge Active...</div>
+                                <div class="text-purple-300">[Council] A.C.E. online. Awaiting directive, Architect.</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-300 mb-2">Background Tasks</h4>
+                            <div id="background-tasks" class="bg-black/40 rounded-lg p-4 h-64 overflow-y-auto text-sm">
+                                <div class="text-gray-500 text-center mt-20">No active tasks. Activate Copilot to begin.</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex space-x-4">
+                    <div class="flex space-x-4 mt-4">
                         <input id="demo-input" type="text" placeholder="Send message to the Council..." class="flex-1 bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
                         <button id="demo-send" class="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-6 py-2 rounded-lg transition-colors">Send</button>
+                        <button id="create-task" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-2 rounded-lg transition-colors">Create Task</button>
                     </div>
                 </div>
             </div>
@@ -260,6 +279,176 @@
     <script>
         let federationConnection = null;
         let isConnected = false;
+        let copilotAgent = null;
+        let backgroundTasks = [];
+        let taskIdCounter = 0;
+
+        // Copilot Coding Agent Class
+        class CopilotAgent {
+            constructor() {
+                this.isActivated = false;
+                this.status = 'inactive';
+                this.capabilities = ['code_analysis', 'task_creation', 'background_processing'];
+                this.activationTime = null;
+            }
+
+            activate() {
+                this.isActivated = true;
+                this.status = 'active';
+                this.activationTime = new Date();
+                this.updateStatusDisplay();
+                this.startBackgroundProcessing();
+                
+                // Send activation message to Federation
+                if (isConnected && federationConnection) {
+                    federationConnection.send(JSON.stringify({
+                        type: "copilot_activation",
+                        source: "copilot_agent",
+                        status: "activated",
+                        capabilities: this.capabilities,
+                        timestamp: this.activationTime.toISOString()
+                    }));
+                }
+            }
+
+            deactivate() {
+                this.isActivated = false;
+                this.status = 'inactive';
+                this.activationTime = null;
+                this.updateStatusDisplay();
+            }
+
+            createBackgroundTask(taskType, description) {
+                if (!this.isActivated) return null;
+                
+                const task = {
+                    id: ++taskIdCounter,
+                    type: taskType,
+                    description: description,
+                    status: 'pending',
+                    created: new Date(),
+                    progress: 0
+                };
+                
+                backgroundTasks.push(task);
+                this.updateTaskDisplay();
+                this.executeTask(task);
+                return task;
+            }
+
+            executeTask(task) {
+                task.status = 'running';
+                this.updateTaskDisplay();
+                
+                // Simulate background task execution
+                const duration = Math.random() * 3000 + 2000; // 2-5 seconds
+                const steps = 10;
+                const stepDuration = duration / steps;
+                
+                let currentStep = 0;
+                const interval = setInterval(() => {
+                    currentStep++;
+                    task.progress = (currentStep / steps) * 100;
+                    this.updateTaskDisplay();
+                    
+                    if (currentStep >= steps) {
+                        clearInterval(interval);
+                        task.status = 'completed';
+                        task.completed = new Date();
+                        this.updateTaskDisplay();
+                        
+                        // Notify completion
+                        this.notifyTaskCompletion(task);
+                    }
+                }, stepDuration);
+            }
+
+            notifyTaskCompletion(task) {
+                const demoOutput = document.getElementById('demo-output');
+                if (demoOutput) {
+                    const time = new Date().toLocaleTimeString();
+                    demoOutput.innerHTML += `<div class="text-green-400">[${time}] Copilot: Task "${task.description}" completed successfully (ID: ${task.id})</div>`;
+                    demoOutput.scrollTop = demoOutput.scrollHeight;
+                }
+                
+                // Send completion message to Federation
+                if (isConnected && federationConnection) {
+                    federationConnection.send(JSON.stringify({
+                        type: "task_completed",
+                        source: "copilot_agent",
+                        task_id: task.id,
+                        task_type: task.type,
+                        description: task.description,
+                        timestamp: new Date().toISOString()
+                    }));
+                }
+            }
+
+            startBackgroundProcessing() {
+                if (!this.isActivated) return;
+                
+                // Create initial background tasks
+                setTimeout(() => {
+                    this.createBackgroundTask('code_analysis', 'Analyzing repository structure');
+                }, 1000);
+                
+                setTimeout(() => {
+                    this.createBackgroundTask('optimization', 'Optimizing performance patterns');
+                }, 2500);
+                
+                setTimeout(() => {
+                    this.createBackgroundTask('documentation', 'Generating code documentation');
+                }, 4000);
+            }
+
+            updateStatusDisplay() {
+                const statusElement = document.getElementById('copilot-status');
+                const activateBtn = document.getElementById('activate-copilot');
+                
+                if (statusElement) {
+                    statusElement.textContent = this.isActivated ? 
+                        `Copilot: Active (${this.activationTime?.toLocaleTimeString()})` : 
+                        'Copilot: Inactive';
+                    statusElement.className = this.isActivated ? 
+                        'text-green-400 font-mono text-sm' : 
+                        'text-gray-400 font-mono text-sm';
+                }
+                
+                if (activateBtn) {
+                    activateBtn.textContent = this.isActivated ? 'Deactivate Copilot' : 'Activate Copilot';
+                    activateBtn.className = this.isActivated ? 
+                        'bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm' :
+                        'bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm';
+                }
+            }
+
+            updateTaskDisplay() {
+                const tasksList = document.getElementById('background-tasks');
+                if (!tasksList) return;
+                
+                tasksList.innerHTML = '';
+                backgroundTasks.forEach(task => {
+                    const taskElement = document.createElement('div');
+                    taskElement.className = 'border border-gray-600 rounded p-2 mb-2 text-sm';
+                    
+                    const statusColor = {
+                        'pending': 'text-yellow-400',
+                        'running': 'text-blue-400',
+                        'completed': 'text-green-400'
+                    }[task.status] || 'text-gray-400';
+                    
+                    taskElement.innerHTML = `
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-300">#${task.id}: ${task.description}</span>
+                            <span class="${statusColor}">${task.status.toUpperCase()}</span>
+                        </div>
+                        ${task.status === 'running' ? `<div class="w-full bg-gray-700 rounded-full h-2 mt-2"><div class="bg-blue-600 h-2 rounded-full" style="width: ${task.progress}%"></div></div>` : ''}
+                    `;
+                    
+                    tasksList.appendChild(taskElement);
+                });
+            }
+        }
 
         // Federation Connection Manager
         function connectToFederation() {
@@ -358,6 +547,9 @@
 
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Copilot Agent
+            copilotAgent = new CopilotAgent();
+            
             // Federation Connection Button
             document.getElementById('connect-federation').addEventListener('click', connectToFederation);
             
@@ -365,6 +557,35 @@
             document.getElementById('try-live-demo').addEventListener('click', showDemo);
             document.getElementById('close-demo').addEventListener('click', hideDemo);
             document.getElementById('demo-send').addEventListener('click', sendDemoMessage);
+            
+            // Copilot Agent Controls
+            document.getElementById('activate-copilot').addEventListener('click', function() {
+                if (copilotAgent.isActivated) {
+                    copilotAgent.deactivate();
+                } else {
+                    copilotAgent.activate();
+                }
+            });
+            
+            // Create Task Button
+            document.getElementById('create-task').addEventListener('click', function() {
+                if (!copilotAgent.isActivated) {
+                    alert('Please activate Copilot first');
+                    return;
+                }
+                
+                const taskTypes = ['code_review', 'refactoring', 'testing', 'documentation', 'optimization'];
+                const taskDescriptions = [
+                    'Reviewing code quality',
+                    'Refactoring legacy components', 
+                    'Generating unit tests',
+                    'Updating API documentation',
+                    'Optimizing performance bottlenecks'
+                ];
+                
+                const randomIndex = Math.floor(Math.random() * taskTypes.length);
+                copilotAgent.createBackgroundTask(taskTypes[randomIndex], taskDescriptions[randomIndex]);
+            });
             
             // Demo Input Enter Key
             document.getElementById('demo-input').addEventListener('keypress', function(e) {
