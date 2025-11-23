@@ -13,13 +13,14 @@
     <header>
         <div class="container">
             <nav>
+                <button class="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-gray-800/50 transition-colors"><h2 class="text-lg font-bold text-cyan-400 tracking-wider">SERAPHINA</h2><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-up-down text-gray-400" aria-hidden="true"><path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path></svg></button>
                 <a href="#" class="logo">Pantheon LadderWorks</a>
                 <ul class="nav-links">
                     <li><a href="#vision">Vision</a></li>
-                    <li><a href="#philosophy">Our Philosophy</a></li>
-                    <li><a href="#origin">Origin Story</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                    <li><a href="#status">Status</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#origin">Origin</a></li>
+                    <li><a href="#demo">Case Study</a></li>
+                    <li><a href="#status">Metrics</a></li>
                 </ul>
             </nav>
         </div>
@@ -77,41 +78,177 @@
             </div>
         </section>
 
-        <section class="interactive-section" id="demo">
-            <div class="demo-controls">
-                <h2>See The Cypher Framework in Action</h2>
-                <p class="text-dim">Watch our AI framework respond to real scenarios with context-aware intelligence.</p>
-                <button class="demo-btn" data-scenario="architect">🧠 The Cypher Framework</button>
+        <section class="demo-section" id="demo">
+            <h2>See The Cypher Framework in Action</h2>
+            <p class="text-dim">A real case study: how persistent context and Multi-Core Orchestration helped a solo creator ship professional projects across 7 months of continuous development.</p>
+            
+            <!-- Quick Comparison -->
+            <div class="comparison-grid">
+                <div class="comparison-card traditional">
+                    <h3>🔄 Traditional AI</h3>
+                    <ul>
+                        <li>Starts from scratch every session</li>
+                        <li>Context lives in chat, then disappears</li>
+                        <li>Single "main.py" does everything → bottlenecks</li>
+                        <li>Progress resets, work scatters</li>
+                    </ul>
+                </div>
+                <div class="comparison-card cypher">
+                    <h3>⚡ The Cypher Framework</h3>
+                    <ul>
+                        <li>Session-to-session continuity via Conversation Memory</li>
+                        <li>Explainable, auditable steps (no black-box magic)</li>
+                        <li><strong>Multi-Core Orchestration:</strong> core.py orchestrates multiple specialized agents</li>
+                        <li>Never lose progress, always build forward</li>
+                    </ul>
+                </div>
             </div>
-            <div class="terminal-window" id="terminal">
-                <!-- Interactive content will be injected here -->
+
+            <!-- Real Development Journey -->
+            <div class="case-study-box">
+                <h3>� Case Study: From Zero to Production in 7 Months</h3>
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Feb</div>
+                            <div class="timeline-content">
+                                <h4>Starting from Scratch</h4>
+                                <p>First month: built Conversation Memory Project (before discovering version control!)</p>
+                                <div class="repo-glimpse">
+                                    <span class="repo-badge learning">Learning Phase</span>
+                                    <span class="tech-stack">Python • AI Persistence</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Mar-May</div>
+                            <div class="timeline-content">
+                                <h4>Foundation Building</h4>
+                                <p>Discovered Git, established repository patterns, agent orchestration concepts</p>
+                                <div class="repo-glimpse">
+                                    <span class="repo-badge private">12+ Private Repos</span>
+                                    <span class="tech-stack">Agent Protocols • Multi-Core Architecture</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">Jun-Aug</div>
+                            <div class="timeline-content">
+                                <h4>Ecosystem Development</h4>
+                                <p>SERAPHINA consciousness platform, knowledge management systems, federation protocols</p>
+                                <div class="repo-glimpse">
+                                    <span class="repo-badge private">20+ Private Repos</span>
+                                    <span class="repo-badge public">KB Generator Kit</span>
+                                    <span class="tech-stack">Full Ecosystem • Production Tools</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item active">
+                            <div class="timeline-marker">Sep</div>
+                            <div class="timeline-content">
+                                <h4>Professional Deployment</h4>
+                                <p>This website: built with Cypher Framework orchestration across multiple sessions</p>
+                                <div class="repo-glimpse">
+                                    <span class="repo-badge total">34 Total Repos</span>
+                                    <span class="repo-badge public">Open Source Ready</span>
+                                    <span class="tech-stack">Production • Google-Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Problem → Real Solution -->
+                <div class="case-grid">
+                    <div>
+                        <h4>🎯 The Challenge</h4>
+                        <p>Solo creator needs a professional site for Google for Startups application. Prior attempts with traditional AI fail: tools forget context, progress resets, work scatters across chats.</p>
+                    </div>
+                    <div>
+                        <h4>🔧 Cypher Approach</h4>
+                        <ul>
+                            <li>Persist context across sessions (Conversation Memory)</li>
+                            <li>Use <strong>Multi-Core Orchestration</strong> to split work: planning, copy, code</li>
+                            <li>Transparent steps for review and rollback</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>✅ Measurable Result</h4>
+                        <ul>
+                            <li>Professional .org site deployed and live</li>
+                            <li>Authentic metrics only (no vanity numbers)</li>
+                            <li>Reusable pattern for future projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Development Activity Showcase -->
+            <div class="activity-showcase">
+                <h4>🚀 Development Velocity (Private Projects Glimpse)</h4>
+                <div class="project-categories">
+                    <div class="category-card">
+                        <h5>🧠 Consciousness Platforms</h5>
+                        <p>SERAPHINA ecosystem, quantum architecture research</p>
+                        <span class="repo-count">8 repos</span>
+                    </div>
+                    <div class="category-card">
+                        <h5>🤖 Agent Orchestration</h5>
+                        <p>Multi-agent systems, federation protocols, command centers</p>
+                        <span class="repo-count">12 repos</span>
+                    </div>
+                    <div class="category-card">
+                        <h5>🛠️ Development Tools</h5>
+                        <p>Knowledge management, editing engines, automation</p>
+                        <span class="repo-count">10 repos</span>
+                    </div>
+                    <div class="category-card">
+                        <h5>📚 Public Framework</h5>
+                        <p>The Cypher Framework (open source), documentation</p>
+                        <span class="repo-count">2 repos</span>
+                    </div>
+                </div>
+                <p class="activity-note">
+                    <strong>Real development activity:</strong> 34 repositories, 7 months continuous progress, all powered by persistent context and Multi-Core Orchestration. 
+                    Private repos protect proprietary SERAPHINA work while public Cypher Framework provides community value.
+                </p>
             </div>
         </section>
 
-        <!-- Vibrant Metrics Section -->
         <section class="stats-section" id="status">
-            <h2>⚡ Our Development Journey in Data</h2>
-            <p>We believe in authentic transparency. Here are the real metrics behind our mission to pioneer truly useful Human-AI partnerships.</p>
+            <h2>Authentic Innovation Metrics</h2>
+            <p>We believe in transparency. Our work is grounded in real-world experience and extensive research and development.</p>
             
-            <div class="stats-grid">
-                <div class="stat">
-                    <div class="stat-value" id="metric-members">14</div>
-                    <div class="stat-title">Years Class A CDL Experience (2011-2025)</div>
+            <details class="metrics-details">
+                <summary><strong>📊 View Our Development Journey</strong></summary>
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-value" id="metric-members">14</div>
+                        <div class="stat-title">Years Class A CDL Experience (2011-2025)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="metric-conversations">34</div>
+                        <div class="stat-title">AI Development Repositories (Since Feb 2025)</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="metric-projects">Creator</div>
+                        <div class="stat-title">The Cypher Framework</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="metric-grants">Architect</div>
+                        <div class="stat-title">Multi-Core Orchestration</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="metric-uptime">Indy-Based</div>
+                        <div class="stat-title">AI Architect</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-title">Forged in Real-World Conditions</div>
+                    </div>
                 </div>
-                <div class="stat">
-                    <div class="stat-value" id="metric-conversations">34+</div>
-                    <div class="stat-title">AI Development Repositories (Since Jan 2025)</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="metric-projects">Creator</div>
-                    <div class="stat-title">The Cypher Framework</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="metric-grants">Architect</div>
-                    <div class="stat-title">Multi-Core Orchestration</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="metric-uptime">Indy-Based</div>
+            </details>
+        </section>
                     <div class="stat-title">AI Architect</div>
                 </div>
                 <div class="stat">
@@ -239,41 +376,5 @@
             });
         });
     </script>
-</body>
-</html>    <!-- REAL METRICS -->
-    <section id="metrics" class="section">
-      <div class="panel">
-        <div class="row-head">
-          <h3>Real metrics</h3>
-          <div class="small" id="last-updated">Updated: —</div>
-        </div>
-        <div class="grid stats">
-          <div class="stat"><div class="label">Platform users</div><div class="value" id="metric-members">—</div></div>
-          <div class="stat"><div class="label">API requests processed</div><div class="value" id="metric-gemini">—</div></div>
-          <div class="stat"><div class="label">Systems deployed</div><div class="value" id="metric-chatgpt">—</div></div>
-          <div class="stat"><div class="label">Professional integrations</div><div class="value" id="metric-claude">—</div></div>
-          <div class="stat"><div class="label">Development milestones</div><div class="value" id="metric-docs">—</div></div>
-          <div class="stat"><div class="label">Projects launched</div><div class="value" id="metric-projects">—</div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="panel contact">
-        <h3>Contact</h3>
-        <p>Email: <a href="mailto:hello@pantheonladderworks.com">hello@pantheonladderworks.com</a></p>
-        <p>GitHub: <a href="https://github.com/Pantheon-LadderWorks">Pantheon‑LadderWorks</a></p>
-        <p>Request: pilots • partnerships • Founders Program</p>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 Pantheon LadderWorks • Enterprise AI Protocol Router (MCP&nbsp;+&nbsp;A2A) • The Cypher Framework is open source.
-    </footer>
-  </div>
-
-  <script src="/assets/metrics.js"></script>
-  <script src="/assets/sitemap.js"></script>
 </body>
 </html>
