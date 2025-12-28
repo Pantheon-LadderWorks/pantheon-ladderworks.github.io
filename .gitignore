@@ -1,47 +1,35 @@
-# Federation Connection Status Logs
-logs/
-federation-*.log
-
-# Node modules (if using build tools)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
+# System files
+thumbs.db
+desktop.ini
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
 
-# Backup files
-*.backup
-*.bak
-*.tmp
+# Logs
+logs
+*.log
+npm-debug.log*
 
-# Development files
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Bot/tool folders
+.claude/
+.claude1/
+.serena/
+.gemini/
+
+# Archives & Cleanup
+archive_cleanup/
+archive_demo_files/
+
+# Build outputs
+_site/
+.jekyll-cache/
+.jekyll-metadata/
+
+# Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-
-# Jekyll
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-
-# Tailwind
-dist/
-build/

@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantheon LadderWorks — Multi-Core Orchestration (Cypher Framework)</title>
-    <meta name="description" content="We build meaningful, persistent, authentic human–AI systems. Public: The Cypher Framework. Private: SERAPHINA. Society of Cores = Multi-Core Orchestration." />
+    <meta name="description"
+        content="We build meaningful, persistent, authentic human–AI systems. Public: The Cypher Framework. Private: SERAPHINA. Society of Cores = Multi-Core Orchestration." />
     <link rel="icon" href="/assets/favicon.png" />
     <link rel="stylesheet" href="/assets/site.css" />
+    <style>
+        /* Extra styles for the new button if not in site.css */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 1px solid var(--accent-color, #6366f1);
+            color: var(--text-color, #e0e6ed);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Pantheon LadderWorks</a>
+                <a href="#" class="logo">
+                    <!-- Logo moved to assets -->
+                    <img src="assets/pantheon_logo_final.svg" alt="Pantheon LadderWorks"
+                        style="height: 40px; vertical-align: middle; margin-right: 0.5rem;">
+                    Pantheon LadderWorks
+                </a>
                 <ul class="nav-links">
                     <li><a href="#vision">Vision</a></li>
                     <li><a href="#philosophy">Our Philosophy</a></li>
                     <li><a href="#origin">Origin Story</a></li>
                     <li><a href="#demo">Demo</a></li>
                     <li><a href="#status">Status</a></li>
+                    <li><a href="/deck" style="color: #a855f7; font-weight: bold;">Step 8 Deck</a></li>
+                    <li><a href="/architecture" style="color: #3b82f6; font-weight: bold;">Architecture</a></li>
+                    <li><a href="/knowledge-graph" style="color: #6366f1; font-weight: bold;">Knowledge Graph</a></li>
                 </ul>
             </nav>
         </div>
@@ -28,21 +57,31 @@
     <main class="container">
         <section class="hero" id="vision">
             <h1>Human-AI Partnerships That Actually Work.</h1>
-            <p>We build resilient, context-aware systems that empower solo creators to ship professional-grade products. This isn't just code; it's a new way to build, survive, and scale.</p>
-            <a href="#philosophy" class="cta-button">Learn Our Philosophy</a>
+            <p>We build resilient, context-aware systems that empower solo creators to ship professional-grade products.
+                This isn't just code; it's a new way to build, survive, and scale.</p>
+            <div class="cta-group">
+                <a href="#philosophy" class="cta-button">Learn Our Philosophy</a>
+                <a href="/deck" class="cta-button secondary">View Company Deck (Alibaba)</a>
+            </div>
         </section>
 
         <section class="philosophy-section" id="philosophy">
             <h2>Agentic Power for Everyone.</h2>
-            <p class="text-dim">Our model is built on a simple, radical belief: the power of sophisticated AI orchestration should belong to everyone, not just developers. We create intuitive platforms that empower individuals and teams to command their own agentic systems.</p>
+            <p class="text-dim">Our model is built on a simple, radical belief: the power of sophisticated AI
+                orchestration should belong to everyone, not just developers. We create intuitive platforms that empower
+                individuals and teams to command their own agentic systems.</p>
             <div class="philosophy-grid">
                 <div class="philosophy-card">
                     <h3>Our Open-Source Engine: "The Cypher Framework"</h3>
-                    <p>We believe in building on a foundation of trust and transparency. That's why we're open-sourcing The Cypher Framework—the robust, model-agnostic engine that powers our entire ecosystem. It's the same engine we use to build our own systems, and we're giving it to the community.</p>
+                    <p>We believe in building on a foundation of trust and transparency. That's why we're open-sourcing
+                        The Cypher Framework—the robust, model-agnostic engine that powers our entire ecosystem. It's
+                        the same engine we use to build our own systems, and we're giving it to the community.</p>
                 </div>
                 <div class="philosophy-card">
                     <h3>Our Vision: The Agentic Control App</h3>
-                    <p>Our core mission is to make agentic AI accessible. We are building the Agentic Control App, an intuitive interface that allows anyone—coders and non-coders alike—to deploy and orchestrate teams of specialized AI agents to achieve their goals.</p>
+                    <p>Our core mission is to make agentic AI accessible. We are building the Agentic Control App, an
+                        intuitive interface that allows anyone—coders and non-coders alike—to deploy and orchestrate
+                        teams of specialized AI agents to achieve their goals.</p>
                 </div>
             </div>
         </section>
@@ -50,37 +89,50 @@
         <!-- Origin Story Section -->
         <section class="philosophy-section" id="origin">
             <h2>The Problem That Started Everything</h2>
-            <p class="text-dim">Innovation often begins with a frustrating limitation that becomes impossible to ignore. Our platform was born from a real-world collaboration failure that highlighted a fundamental flaw in AI systems.</p>
-            
+            <p class="text-dim">Innovation often begins with a frustrating limitation that becomes impossible to ignore.
+                Our platform was born from a real-world collaboration failure that highlighted a fundamental flaw in AI
+                systems.</p>
+
             <div class="philosophy-grid">
                 <div class="philosophy-card">
                     <h3>🚛 The Workplace Project</h3>
-                    <p>While working in logistics operations, we initiated a practical safety improvement project: creating an interactive map system for truck yard operations at a major facility in Plainfield, IN. This involved translating operational knowledge into structured digital tools.</p>
+                    <p>While working in logistics operations, we initiated a practical safety improvement project:
+                        creating an interactive map system for truck yard operations at a major facility in Plainfield,
+                        IN. This involved translating operational knowledge into structured digital tools.</p>
                 </div>
                 <div class="philosophy-card">
-                    <h3>� The Technical Barrier</h3>
-                    <p>Platform limitations caused conversation context to become inaccessible. Weeks of collaborative development work and accumulated understanding was lost. Attempts to restore context in new sessions failed due to AI statelessness.</p>
+                    <h3>🛑 The Technical Barrier</h3>
+                    <p>Platform limitations caused conversation context to become inaccessible. Weeks of collaborative
+                        development work and accumulated understanding was lost. Attempts to restore context in new
+                        sessions failed due to AI statelessness.</p>
                 </div>
                 <div class="philosophy-card">
-                    <h3>� The Solution Architecture</h3>
-                    <p>This experience revealed the core problem: AI systems lack persistent memory and context continuity. We recognized the need for robust conversation persistence, multi-agent coordination, and resilient system architecture.</p>
+                    <h3>💡 The Solution Architecture</h3>
+                    <p>This experience revealed the core problem: AI systems lack persistent memory and context
+                        continuity. We recognized the need for robust conversation persistence, multi-agent
+                        coordination, and resilient system architecture.</p>
                 </div>
                 <div class="philosophy-card">
                     <h3>🏗️ The Architectural Response</h3>
-                    <p>This failure became our "biggest why." We designed The Cypher Framework with a foundational commitment to persistent memory and context continuity, pioneering a resilient Multi-Core Orchestration Architecture to ensure progress is never lost.</p>
+                    <p>This failure became our "biggest why." We designed The Cypher Framework with a foundational
+                        commitment to persistent memory and context continuity, pioneering a resilient Multi-Core
+                        Orchestration Architecture to ensure progress is never lost.</p>
                 </div>
             </div>
-            
+
             <div class="philosophy-card" style="margin-top: 2rem; text-align: center;">
                 <h3>🎯 Our Approach</h3>
-                <p><strong>We solve problems we've experienced firsthand.</strong> Every component addresses real limitations encountered in professional AI collaboration. We build systems that maintain context, learn continuously, and never lose progress.</p>
+                <p><strong>We solve problems we've experienced firsthand.</strong> Every component addresses real
+                    limitations encountered in professional AI collaboration. We build systems that maintain context,
+                    learn continuously, and never lose progress.</p>
             </div>
         </section>
 
         <section class="interactive-section" id="demo">
             <div class="demo-controls">
                 <h2>See The Cypher Framework in Action</h2>
-                <p class="text-dim">Watch our AI framework respond to real scenarios with context-aware intelligence.</p>
+                <p class="text-dim">Watch our AI framework respond to real scenarios with context-aware intelligence.
+                </p>
                 <button class="demo-btn" data-scenario="architect">🧠 The Cypher Framework</button>
             </div>
             <div class="terminal-window" id="terminal">
@@ -91,15 +143,16 @@
         <!-- Vibrant Metrics Section -->
         <section class="stats-section" id="status">
             <h2>⚡ Our Development Journey in Data</h2>
-            <p>We believe in authentic transparency. Here are the real metrics behind our mission to pioneer truly useful Human-AI partnerships.</p>
-            
+            <p>We believe in authentic transparency. Here are the real metrics behind our mission to pioneer truly
+                useful Human-AI partnerships.</p>
+
             <div class="stats-grid">
                 <div class="stat">
                     <div class="stat-value" id="metric-members">14</div>
                     <div class="stat-title">Years Class A CDL Experience (2011-2025)</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="metric-conversations">34+</div>
+                    <div class="stat-value" id="metric-conversations">79</div>
                     <div class="stat-title">AI Development Repositories (Since Jan 2025)</div>
                 </div>
                 <div class="stat">
@@ -125,7 +178,7 @@
         <section class="contact-section">
             <h2>🚀 Start Your Journey</h2>
             <p>Ready to build the future with human-AI partnerships that actually work?</p>
-            
+
             <div class="contact-grid">
                 <div class="contact-card">
                     <h3>📧 Email</h3>
@@ -147,7 +200,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 Pantheon LadderWorks. Building the future, one rung at a time.</p>
-            <p class="text-dim">Enterprise AI Protocol Router (MCP + A2A) • The Cypher Framework is open source.</p>
+            <p class="text-dim">Powered by CodeCraft & OMNI • The Cypher Framework will be Open Source.</p>
         </div>
     </footer>
 
@@ -187,17 +240,17 @@
                     currentLineElement = document.createElement('div');
                     currentLineElement.className = 'terminal-line';
                     terminal.appendChild(currentLineElement);
-                    
+
                     // Instantly show the prompt character
                     const promptSpan = document.createElement('span');
                     promptSpan.textContent = '> ';
                     promptSpan.style.opacity = '1';
                     currentLineElement.appendChild(promptSpan);
-                    
+
                     // Make the line visible to start typing
                     setTimeout(() => currentLineElement.style.opacity = '1', 10);
                 }
-                
+
                 const line = lines[lineIndex];
                 if (charIndex < line.length) {
                     currentLineElement.innerHTML += line.charAt(charIndex);
@@ -213,7 +266,7 @@
                 }
                 terminal.scrollTop = terminal.scrollHeight;
             }
-            
+
             type();
         }
 
@@ -239,41 +292,8 @@
             });
         });
     </script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="assets/visualizer.js"></script>
 </body>
-</html>    <!-- REAL METRICS -->
-    <section id="metrics" class="section">
-      <div class="panel">
-        <div class="row-head">
-          <h3>Real metrics</h3>
-          <div class="small" id="last-updated">Updated: —</div>
-        </div>
-        <div class="grid stats">
-          <div class="stat"><div class="label">Platform users</div><div class="value" id="metric-members">—</div></div>
-          <div class="stat"><div class="label">API requests processed</div><div class="value" id="metric-gemini">—</div></div>
-          <div class="stat"><div class="label">Systems deployed</div><div class="value" id="metric-chatgpt">—</div></div>
-          <div class="stat"><div class="label">Professional integrations</div><div class="value" id="metric-claude">—</div></div>
-          <div class="stat"><div class="label">Development milestones</div><div class="value" id="metric-docs">—</div></div>
-          <div class="stat"><div class="label">Projects launched</div><div class="value" id="metric-projects">—</div></div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="panel contact">
-        <h3>Contact</h3>
-        <p>Email: <a href="mailto:hello@pantheonladderworks.com">hello@pantheonladderworks.com</a></p>
-        <p>GitHub: <a href="https://github.com/Pantheon-LadderWorks">Pantheon‑LadderWorks</a></p>
-        <p>Request: pilots • partnerships • Founders Program</p>
-      </div>
-    </section>
-
-    <footer>
-      © 2025 Pantheon LadderWorks • Enterprise AI Protocol Router (MCP&nbsp;+&nbsp;A2A) • The Cypher Framework is open source.
-    </footer>
-  </div>
-
-  <script src="/assets/metrics.js"></script>
-  <script src="/assets/sitemap.js"></script>
-</body>
 </html>

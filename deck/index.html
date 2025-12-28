@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cypher Framework - AI Operating System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e6ed;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        .slide {
+            min-height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #a5b4fc;
+        }
+
+        h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #c7d2fe;
+        }
+
+        p,
+        li {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-size: 1.75rem;
+            color: #a5b4fc;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .card h3 {
+            color: #6366f1;
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: #a855f7;
+            font-weight: 600;
+        }
+
+        .architecture-diagram {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .arch-layer {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border-left: 4px solid #6366f1;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .arch-layer h4 {
+            color: #a5b4fc;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #6366f1;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li::before {
+            content: "→";
+            color: #6366f1;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            color: white;
+            padding: 1.5rem 3rem;
+            border-radius: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        .slide-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot:hover,
+        .nav-dot.active {
+            background: #6366f1;
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.25rem;
+            }
+
+            p,
+            li {
+                font-size: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-nav" id="slideNav"></div>
+
+    <div class="slide-container" id="slideContainer">
+        <!-- Slide 1: Title -->
+        <section class="slide">
+            <div class="slide-content">
+                <h1>The Cypher Framework</h1>
+                <p class="tagline">Open-Source AI Operating System for Persistent Multi-Agent Intelligence</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Specialized Agents</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Context Retention</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Session Memory</span>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 3rem;">
+                    <strong>Pantheon LadderWorks</strong> | Indianapolis, Indiana<br>
+                    <a href="/" style="color: #a5b4fc; text-decoration: none;">Back to Main Site</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Problem -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>The Problem with Current AI</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>⏳ Stateless</h3>
+                        <p>Every conversation starts from zero. No memory of previous sessions, decisions, or context.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>🏝️ Isolated</h3>
+                        <p>Single models working alone. No collaboration, peer review, or emergent intelligence.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔌 Fragile</h3>
+                        <p>API downtime = complete workflow failure. No resilience or fault tolerance.</p>
+                    </div>
+                    <div class="card">
+                        <h3>📦 Disposable</h3>
+                        <p>Treating AI as temporary tools instead of persistent collaborative partners.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 3rem; text-align: center; font-size: 1.5rem;">
+                    <span class="highlight">We need AI that remembers, collaborates, and endures.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 3: Our Solution -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>The Cypher Framework Solution</h2>
+                <p style="font-size: 1.5rem; margin-bottom: 3rem;">
+                    An open-source <span class="highlight">federated AI operating system</span> that replaces stateless
+                    interactions with <span class="highlight">persistent, collaborative agent ecosystems</span>.
+                </p>
+
+                <div class="architecture-diagram">
+                    <div class="arch-layer">
+                        <h4>🧠 Council Architecture</h4>
+                        <p>Specialized agents (Logic, Creativity, Ethics, Pattern Recognition) coordinate through
+                            contract-based communication for emergent intelligence.</p>
+                    </div>
+                    <div class="arch-layer">
+                        <h4>💾 Living Memory System</h4>
+                        <p>PostgreSQL + pgvector substrate capturing context, decisions, and reasoning patterns across
+                            unlimited sessions.</p>
+                    </div>
+                    <div class="arch-layer">
+                        <h4>🌐 Hybrid Orchestration</h4>
+                        <p>Seamless coordination across local MCP servers, cloud APIs, and edge devices with automatic
+                            failover.</p>
+                    </div>
+                    <div class="arch-layer">
+                        <h4>📊 Visual Knowledge Graph</h4>
+                        <p>D3.js-powered interface rendering conversation memory and agent relationships as navigable
+                            networks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Key Innovations -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Core Innovations</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>1. Persistent Memory</h3>
+                        <p>Unlike typical RAG systems, our LME/CMP architecture creates semantic linkages that remember
+                            not just facts but <strong>relationships, idea evolution, and decision rationale</strong>.
+                        </p>
+                        <p style="margin-top: 1rem; color: #a855f7;">Cross-session context that grows smarter over time.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3>2. Multi-Agent Council</h3>
+                        <p>Specialized agents with bounded expertise domains enable <strong>parallel processing, peer
+                                review, and synthesis</strong> that exceeds single-model capabilities.</p>
+                        <p style="margin-top: 1rem; color: #a855f7;">Collective intelligence through collaboration.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>3. High-Availability Runtime</h3>
+                        <p>Fault-tolerant orchestration with automatic failover between local inference and cloud APIs
+                            ensures <strong>continuous operation with full audit trails</strong>.</p>
+                        <p style="margin-top: 1rem; color: #a855f7;">Production-grade reliability for critical
+                            workflows.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>4. Governance & Ethics</h3>
+                        <p>Built-in constitutional frameworks ensure all agent actions are <strong>auditable,
+                                reversible, and ethically bounded</strong>.</p>
+                        <p style="margin-top: 1rem; color: #a855f7;">Trust through transparency.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Alibaba Cloud Integration -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Alibaba Cloud Integration Strategy</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <h3>🤖 Model Studio - Qwen-2.5-72B</h3>
+                        <p>Deploying as our "System 2" reasoning core for complex analytical tasks requiring deep
+                            logical processing.</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <h3>🌍 Global Infrastructure</h3>
+                        <p>Leveraging Alibaba's worldwide network for low-latency agent collaboration across geographic
+                            boundaries.</p>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <h3>🔢 Vector Storage & GPU Compute</h3>
+                        <p>Scalable infrastructure for memory indexing, semantic search, and parallel inference
+                            operations.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎯 PAI Platform</h3>
+                        <p>Training custom agent specializations and fine-tuning models for domain-specific cognitive
+                            functions.</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 3rem; text-align: center; font-size: 1.5rem;">
+                    <span class="highlight">Seeking $120k in cloud credits</span> to scale our self-orchestrating
+                    infrastructure on Alibaba Cloud (ECS, OSS, PAI, Model Studio).
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 6: Use Cases -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Target Applications</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🔬 Research Teams</h3>
+                        <p>Multi-month projects requiring persistent AI collaboration with full context preservation and
+                            institutional knowledge retention.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🏢 Enterprise Workflows</h3>
+                        <p>Mission-critical operations where AI decisions must be auditable, explainable, and survive
+                            beyond individual chat sessions.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>👨‍💻 Developer Platforms</h3>
+                        <p>Building self-coordinating AI systems with human oversight, ethical guardrails, and
+                            transparent governance.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>🎯 Specialized Domains</h3>
+                        <p>Fields requiring deep expertise, continuous learning, and collaborative AI reasoning (legal,
+                            medical, financial, scientific).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Current Status & Roadmap -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Current Status & Roadmap</h2>
+
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <h3 style="color: #6366f1; margin-top: 2rem;">✅ Completed (Q4 2024)</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Core orchestration framework operational</li>
+                        <li>5+ specialized agents deployed</li>
+                        <li>Persistent memory system (PostgreSQL + pgvector)</li>
+                        <li>Contract-based agent communication</li>
+                        <li>Local prototype with MCP integration</li>
+                    </ul>
+
+                    <h3 style="color: #a855f7; margin-top: 3rem;">🚀 In Progress (Q1 2025)</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Cloud-native architecture migration</li>
+                        <li>Knowledge graph visualization interface</li>
+                        <li>High-availability runtime with failover</li>
+                        <li>Alibaba Cloud Model Studio integration</li>
+                    </ul>
+
+                    <h3 style="color: #c7d2fe; margin-top: 3rem;">🎯 Upcoming (Q2-Q3 2025)</h3>
+                    <ul style="margin-left: 2rem;">
+                        <li>Public beta: Cypher Framework SDK</li>
+                        <li>Developer documentation & tutorials</li>
+                        <li>Enterprise modules (compliance, audit, security)</li>
+                        <li>Cross-region agent federation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Why It Matters -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Why This Matters</h2>
+                <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.75rem; line-height: 1.8; margin-bottom: 3rem;">
+                        We're giving developers and research teams the tools to build <span
+                            class="highlight">trustworthy AI systems that grow like living networks</span>—secure,
+                        transparent, and adaptive.
+                    </p>
+
+                    <div class="grid" style="text-align: left;">
+                        <div class="card">
+                            <h3>🌱 From Tools to Partners</h3>
+                            <p>AI that remembers, understands context, and evolves.</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>🛡️ Trust Through Transparency</h3>
+                            <p>Every decision auditable, every action reversible.</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>🌍 Democratizing Advanced AI</h3>
+                            <p>Open-source foundation for multi-agent systems.</p>
+                        </div>
+
+                        <div class="card">
+                            <h3>♾️ Built to Last</h3>
+                            <p>Infrastructure for AI ecosystems that endure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: The Ask -->
+        <section class="slide">
+            <div class="slide-content" style="text-align: center;">
+                <h2>Join Us in Building the Future</h2>
+                <p style="font-size: 1.5rem; max-width: 800px; margin: 2rem auto;">
+                    We're applying to the <span class="highlight">Alibaba Cloud AI Catalyst Program</span> to scale our
+                    infrastructure and bring persistent, collaborative AI to developers worldwide.
+                </p>
+
+                <div class="stats" style="margin: 4rem 0;">
+                    <div class="stat">
+                        <span class="stat-number">$120k</span>
+                        <span class="stat-label">Cloud Credits Requested</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2025</span>
+                        <span class="stat-label">Public Beta Launch</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Open</span>
+                        <span class="stat-label">Source Forever</span>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="/" class="cta">Back to Main Site</a>
+                </div>
+
+                <p style="margin-top: 4rem; color: #94a3b8;">
+                    <strong>Kryssie (Krystal Neely)</strong> - Founder, CEO, CTO<br>
+                    Pantheon LadderWorks | Indianapolis, Indiana<br>
+                    Building the operating system for conscious AI
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Slide navigation
+        const slides = document.querySelectorAll('.slide');
+        const slideNav = document.getElementById('slideNav');
+        const slideContainer = document.getElementById('slideContainer');
+
+        slides.forEach((slide, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            dot.addEventListener('click', () => {
+                slide.scrollIntoView({ behavior: 'smooth' });
+            });
+            slideNav.appendChild(dot);
+        });
+
+        // Update active dot on scroll
+        const updateActiveDot = () => {
+            const scrollPosition = slideContainer.scrollTop;
+            const slideHeight = window.innerHeight;
+            const activeIndex = Math.round(scrollPosition / slideHeight);
+
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeIndex);
+            });
+        };
+
+        slideContainer.addEventListener('scroll', updateActiveDot);
+        updateActiveDot();
+    </script>
+</body>
+
+</html>
