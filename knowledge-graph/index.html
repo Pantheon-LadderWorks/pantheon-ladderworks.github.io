@@ -8,8 +8,8 @@ layout: null
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Cypher FrameWork - Knowledge Graph</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/pantheon_logo_final.svg" />
-    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/pantheon_logo_final.svg" />
+    <link rel="stylesheet" href="../assets/site.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
@@ -276,7 +276,7 @@ layout: null
             .force("collide", d3.forceCollide().radius(50));
 
         // Load data from external JSON
-        d3.json("/assets/knowledge_graph_full.json").then(function (data) {
+        d3.json("../assets/knowledge_graph_full.json").then(function (data) {
             graphData = data;
             updateGraph();
         }).catch(function (error) {
