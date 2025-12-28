@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantheon LadderWorks — Multi-Core Orchestration (Cypher Framework)</title>
+    <title>Pantheon LadderWorks | The Cypher Framework</title>
     <meta name="description"
         content="We build meaningful, persistent, authentic human–AI systems. Public: The Cypher Framework. Private: SERAPHINA. Society of Cores = Multi-Core Orchestration." />
     <link rel="icon" href="/assets/favicon.png" />
-    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="stylesheet" href="assets/site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Extra styles for the new button if not in site.css */
         .cta-group {
@@ -31,28 +32,8 @@
 
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <!-- Logo moved to assets -->
-                    <img src="assets/pantheon_logo_final.svg" alt="Pantheon LadderWorks"
-                        style="height: 40px; vertical-align: middle; margin-right: 0.5rem;">
-                    Pantheon LadderWorks
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#vision">Vision</a></li>
-                    <li><a href="#philosophy">Our Philosophy</a></li>
-                    <li><a href="#origin">Origin Story</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                    <li><a href="#status">Status</a></li>
-                    <li><a href="/deck" style="color: #a855f7; font-weight: bold;">Step 8 Deck</a></li>
-                    <li><a href="/architecture" style="color: #3b82f6; font-weight: bold;">Architecture</a></li>
-                    <li><a href="/knowledge-graph" style="color: #6366f1; font-weight: bold;">Knowledge Graph</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- Header Included via Jekyll -->
+    {% include header.html %}
 
     <main class="container">
         <section class="hero" id="vision">
@@ -62,6 +43,10 @@
             <div class="cta-group">
                 <a href="#philosophy" class="cta-button">Learn Our Philosophy</a>
                 <a href="/deck" class="cta-button secondary">View Company Deck (Alibaba)</a>
+                <a href="/architecture" class="cta-button secondary"
+                    style="border-color: #3b82f6; color: #3b82f6;">Framework Architecture</a>
+                <a href="/knowledge-graph" class="cta-button secondary"
+                    style="border-color: #6366f1; color: #6366f1;">System Knowledge Graph</a>
             </div>
         </section>
 
@@ -197,12 +182,7 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Pantheon LadderWorks. Building the future, one rung at a time.</p>
-            <p class="text-dim">Powered by CodeCraft & OMNI • The Cypher Framework will be Open Source.</p>
-        </div>
-    </footer>
+    {% include footer.html %}
 
     <script>
         const scenarios = {

@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,26 +16,26 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            color: #e0e6ed;
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
 
         .slide-container {
-            height: 100vh;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
+            width: 100%;
+            /* Removed scroll-snap properties for normal scrolling */
         }
 
         .slide {
             min-height: 100vh;
-            scroll-snap-align: start;
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             padding: 4rem 2rem;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
             position: relative;
         }
 
@@ -260,7 +263,10 @@
 <body>
     <div class="slide-nav" id="slideNav"></div>
 
-    <div class="slide-container" id="slideContainer">
+    <!-- Header Included via Jekyll -->
+    {% include header.html %}
+
+    <div class="slide-container" id="slideContainer" style="padding-top: 60px;"> <!-- Padding for fixed header -->
         <!-- Slide 1: Title -->
         <section class="slide">
             <div class="slide-content">
@@ -281,8 +287,7 @@
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 3rem;">
-                    <strong>Pantheon LadderWorks</strong> | Indianapolis, Indiana<br>
-                    <a href="/" style="color: #a5b4fc; text-decoration: none;">Back to Main Site</a>
+                    <strong>Pantheon LadderWorks</strong> | Indianapolis, Indiana
                 </p>
             </div>
         </section>
@@ -565,6 +570,8 @@
         </section>
     </div>
 
+    {% include footer.html %}
+
     <script>
         // Slide navigation
         const slides = document.querySelectorAll('.slide');
@@ -582,7 +589,7 @@
 
         // Update active dot on scroll
         const updateActiveDot = () => {
-            const scrollPosition = slideContainer.scrollTop;
+            const scrollPosition = window.scrollY;
             const slideHeight = window.innerHeight;
             const activeIndex = Math.round(scrollPosition / slideHeight);
 
@@ -591,7 +598,7 @@
             });
         };
 
-        slideContainer.addEventListener('scroll', updateActiveDot);
+        window.addEventListener('scroll', updateActiveDot);
         updateActiveDot();
     </script>
 </body>

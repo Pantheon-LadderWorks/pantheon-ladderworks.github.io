@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,24 +11,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            /* Slate 900 */
-            color: #e2e8f0;
+            /* font-family: 'Inter', sans-serif; -- Handled by site.css but keeping for safety if site.css fails to load or specific overwrite needed, actually site.css handles it. */
+            /* background-color: #0f172a; -- Handled by site.css */
+            /* color: #e2e8f0; -- Handled by site.css */
             margin: 0;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
         #architecture-map {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            flex-grow: 1;
+            position: relative;
         }
 
         .controls {
             position: absolute;
             top: 20px;
+            /* Relative to map container now */
             left: 20px;
             background-color: rgba(15, 23, 42, 0.9);
             padding: 1.5rem;
@@ -35,56 +43,42 @@
             z-index: 10;
             max-width: 320px;
         }
-
-        .back-link {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 10;
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s;
-        }
-
-        .back-link:hover {
-            color: #fff;
-        }
     </style>
 </head>
 
 <body>
-    <div class="controls">
-        <h1
-            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 mb-2">
-            The Cypher FrameWork
-        </h1>
-        <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
-            Anatomical Federation View
-        </h2>
-        <p class="text-sm text-gray-300 leading-relaxed mb-4">
-            This visualization maps the <strong>Cypher Framework</strong> as a living organism.
-            It represents the "Product" view—the publicly reproducible architecture available to developers.
-        </p>
-        <div class="space-y-2 text-xs text-gray-400">
-            <div class="flex items-center">
-                <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span> Core (Head)
-            </div>
-            <div class="flex items-center">
-                <span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span> Systems (Body)
-            </div>
-            <div class="flex items-center">
-                <span class="w-3 h-3 rounded-full bg-emerald-500 mr-2"></span> Agents (Capabilities)
-            </div>
-            <div class="flex items-center">
-                <span class="w-3 h-3 rounded-full bg-amber-500 mr-2"></span> Stations (Infrastructure)
+    <!-- Header Included via Jekyll -->
+    {% include header.html %}
+
+    <div id="architecture-map">
+        <div class="controls">
+            <h1
+                class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400 mb-2">
+                The Cypher FrameWork
+            </h1>
+            <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+                Anatomical Federation View
+            </h2>
+            <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                This visualization maps the <strong>Cypher Framework</strong> as a living organism.
+                It represents the "Product" view—the publicly reproducible architecture available to developers.
+            </p>
+            <div class="space-y-2 text-xs text-gray-400">
+                <div class="flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-red-500 mr-2"></span> Core (Head)
+                </div>
+                <div class="flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-blue-500 mr-2"></span> Systems (Body)
+                </div>
+                <div class="flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-emerald-500 mr-2"></span> Agents (Capabilities)
+                </div>
+                <div class="flex items-center">
+                    <span class="w-3 h-3 rounded-full bg-amber-500 mr-2"></span> Stations (Infrastructure)
+                </div>
             </div>
         </div>
     </div>
-
-    <div id="architecture-map"></div>
-
-    <a href="/" class="back-link">← Back to Main Site</a>
 
     <script>
         // Full Screen D3 Visualization

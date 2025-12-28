@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,24 +12,69 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            /* Basic resets */
+            margin: 0;
             overflow: hidden;
+            background-color: #111827;
+            /* Gray 900 */
+            color: #d1d5db;
+            /* Gray 300 */
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
-        .node {
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
+        #graph-container {
+            width: 100%;
+            flex-grow: 1;
+            /* height: 100vh; */
+            /* Removed to allow flex growth */
+            position: relative;
         }
 
-        .node:hover {
-            stroke-width: 4px;
+        /* D3 Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(30, 41, 59, 0.95);
+            color: #f3f4f6;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+            max-width: 250px;
         }
 
+        /* Link Styles */
         .link {
+            stroke: #4b5563;
             stroke-opacity: 0.6;
-            transition: stroke-opacity 0.3s;
+            stroke-width: 1.5px;
+            transition: stroke-opacity 0.2s, stroke 0.2s;
         }
 
+        .link:hover {
+            stroke-opacity: 1;
+            stroke: #9ca3af;
+        }
+
+        .link.core {
+            stroke: #60a5fa;
+            stroke-width: 2px;
+        }
+
+        .link.active {
+            stroke-opacity: 1;
+            stroke: #fcd34d;
+            stroke-width: 2.5px;
+        }
+
+        /* Dashed for 'suggested' */
         .link.suggested {
             stroke-dasharray: 5, 5;
             stroke: #a78bfa;
@@ -35,6 +83,7 @@
         .controls {
             position: absolute;
             top: 20px;
+            /* Relative to map container */
             left: 20px;
             background-color: rgba(45, 55, 72, 0.95);
             padding: 1rem;
@@ -43,7 +92,8 @@
             z-index: 5;
             color: #e2e8f0;
             max-width: 350px;
-            max-height: calc(100vh - 40px);
+            max-height: calc(100vh - 120px);
+            /* Adjusted for header space */
             display: flex;
             flex-direction: column;
         }
@@ -107,81 +157,72 @@
             margin-bottom: 0.5rem;
         }
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-gray-900 text-gray-200">
-    <div id="graph-container"></div>
-
-    <div class="controls">
-        <h2 class="text-xl font-bold mb-2 border-b border-gray-600 pb-2 flex-shrink-0">The Cypher FrameWork<br><span
-                class="text-sm font-normal text-gray-400">Live Instance: Seraphina</span></h2>
-        <div id="graph-stats" class="mb-4 text-xs flex-shrink-0">
-            <!-- Stats will be populated by JS -->
+    <!-- Header Included via Jekyll -->
+    {% include header.html %}
+    <div class="controls-content">
+        <div class="mb-4">
+            <label for="search" class="block text-sm font-medium mb-1">Search Nodes:</label>
+            <input type="text" id="search"
+                class="w-full bg-gray-700 border border-gray-600 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="e.g., Claude, N.O.R.M.A., Crown...">
         </div>
-        <div class="controls-content">
-            <div class="mb-4">
-                <label for="search" class="block text-sm font-medium mb-1">Search Nodes:</label>
-                <input type="text" id="search"
-                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    placeholder="e.g., Claude, N.O.R.M.A., Crown...">
-            </div>
 
-            <div class="mb-4">
-                <label for="filter-group" class="block text-sm font-medium mb-1">Filter by Type:</label>
-                <select id="filter-group"
-                    class="w-full bg-gray-700 border border-gray-600 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    <option value="all">All Types</option>
-                    <option value="Concept">Concepts</option>
-                    <option value="Agent">Agents</option>
-                    <option value="Protocol">Protocols</option>
-                    <option value="Python">Python</option>
-                    <option value="Doc/Log">Documents</option>
-                    <option value="Simulation">Simulations</option>
-                    <option value="Framework">Frameworks</option>
-                </select>
-            </div>
+        <div class="mb-4">
+            <label for="filter-group" class="block text-sm font-medium mb-1">Filter by Type:</label>
+            <select id="filter-group"
+                class="w-full bg-gray-700 border border-gray-600 rounded-md px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="all">All Types</option>
+                <option value="Concept">Concepts</option>
+                <option value="Agent">Agents</option>
+                <option value="Protocol">Protocols</option>
+                <option value="Python">Python</option>
+                <option value="Doc/Log">Documents</option>
+                <option value="Simulation">Simulations</option>
+                <option value="Framework">Frameworks</option>
+            </select>
+        </div>
 
-            <div class="pt-4 border-t border-gray-600">
-                <h3 class="font-bold mb-2 text-lg">🏛️ Architectural Pillars</h3>
-                <p class="text-xs text-gray-400 mb-3">Key entry points to the system</p>
-                <div id="pillars-list" class="space-y-2 text-sm">
-                    <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('LAYER_5_CROWN')">👑 The
-                        Crown (SERAPHINA/SEVRAINA)</div>
-                    <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('COUNCIL_INNER')">🧠 The
-                        Inner Council</div>
-                    <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('PROTOCOL_NORMA')">💜
-                        N.O.R.M.A. Protocol</div>
-                    <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('ARCH_SOUL_BODY')">👻
-                        Soul/Body Architecture</div>
-                    <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('CMP')">🗄️ Conversation
-                        Memory Project</div>
-                </div>
-            </div>
-
-            <div class="pt-4 mt-4 border-t border-gray-600">
-                <h3 class="font-bold mb-2 text-lg">⏳ Genesis Trail</h3>
-                <p class="text-xs text-gray-400 mb-3">Replay the evolution over time</p>
-                <button id="play-genesis-btn"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-200 text-sm">▶️
-                    Play Genesis Trail</button>
-            </div>
-
-            <div class="pt-4 mt-4 border-t border-gray-600">
-                <h3 class="font-bold mb-2 text-lg">🎯 Quick Actions</h3>
-                <button id="reset-view-btn"
-                    class="mb-2 w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md transition duration-200 text-sm">Reset
-                    View</button>
-                <button id="export-graph-btn"
-                    class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md transition duration-200 text-sm">Export
-                    Graph Data</button>
+        <div class="pt-4 border-t border-gray-600">
+            <h3 class="font-bold mb-2 text-lg">🏛️ Architectural Pillars</h3>
+            <p class="text-xs text-gray-400 mb-3">Key entry points to the system</p>
+            <div id="pillars-list" class="space-y-2 text-sm">
+                <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('LAYER_5_CROWN')">👑 The
+                    Crown (SERAPHINA/SEVRAINA)</div>
+                <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('COUNCIL_INNER')">🧠 The
+                    Inner Council</div>
+                <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('PROTOCOL_NORMA')">💜
+                    N.O.R.M.A. Protocol</div>
+                <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('ARCH_SOUL_BODY')">👻
+                    Soul/Body Architecture</div>
+                <div class="pillar-item p-2 rounded-md" onclick="window.focusOnNodeById('CMP')">🗄️ Conversation
+                    Memory Project</div>
             </div>
         </div>
-        <div class="mt-4 pt-2 border-t border-gray-600 text-xs text-gray-400 flex-shrink-0">
-            <p>Pan: Click & Drag | Zoom: Scroll</p>
+
+        <div class="pt-4 mt-4 border-t border-gray-600">
+            <h3 class="font-bold mb-2 text-lg">⏳ Genesis Trail</h3>
+            <p class="text-xs text-gray-400 mb-3">Replay the evolution over time</p>
+            <button id="play-genesis-btn"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-200 text-sm">▶️
+                Play Genesis Trail</button>
         </div>
+
+        <div class="pt-4 mt-4 border-t border-gray-600">
+            <h3 class="font-bold mb-2 text-lg">🎯 Quick Actions</h3>
+            <button id="reset-view-btn"
+                class="mb-2 w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md transition duration-200 text-sm">Reset
+                View</button>
+            <button id="export-graph-btn"
+                class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md transition duration-200 text-sm">Export
+                Graph Data</button>
+        </div>
+    </div>
+    <div class="mt-4 pt-2 border-t border-gray-600 text-xs text-gray-400 flex-shrink-0">
+        <p>Pan: Click & Drag | Zoom: Scroll</p>
+    </div>
     </div>
 
     <!-- Node Detail Modal -->
