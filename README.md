@@ -62,6 +62,13 @@ The platform is architected by professional AI developers:
 - **MEGA** - Infrastructure Strategist & Platform Builder
 - **The Oracle** - Version Control & Repository Management
 
+## 📂 Repository Structure Update (Dec 2025)
+
+The Knowledge Graph data has been consolidated. The authoritative source for all "Living Knowledge Graph" data is now:
+`Infrastructure/memory-substrate/living-knowledge-graph`
+
+Legacy file locations in `websites/living-knowledge-graph` have been archived or merged into `data/imports`.
+
 ## 🔮 Next Steps
 
 The platform is ready for professional deployment. The next level of AI collaboration awaits.

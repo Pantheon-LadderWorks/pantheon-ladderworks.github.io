@@ -1,0 +1,265 @@
+<div class="app-launcher" style="position: relative; display: inline-block; margin-right: 1rem;">
+    <button id="launcher-btn" onclick="toggleLauncher()" style="
+        display: flex; 
+        align-items: center; 
+        gap: 0.5rem; 
+        background: transparent; 
+        border: none; 
+        cursor: pointer; 
+        padding: 0.5rem; 
+        border-radius: 0.375rem;
+        transition: background-color 0.2s;
+    ">
+        <span style="
+            font-family: 'Inter', sans-serif; 
+            font-weight: 700; 
+            font-size: 1.125rem; 
+            color: #22d3ee; 
+            letter-spacing: 0.05em;
+        ">CYPHER</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="7 13 12 18 17 13"></polyline>
+            <polyline points="7 6 12 11 17 6"></polyline>
+        </svg>
+    </button>
+
+    <div id="launcher-dropdown" style="
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        margin-top: 0.5rem; 
+        width: 20rem; 
+        background-color: #0f172a; 
+        border: 1px solid rgba(168, 85, 247, 0.3); 
+        border-radius: 0.5rem; 
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); 
+        z-index: 100;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+    ">
+        <!-- Header -->
+        <div style="padding: 0.75rem; border-bottom: 1px solid #334155; background-color: rgba(30, 41, 59, 0.5);">
+            <h3 style="margin: 0; font-weight: 700; color: #f1f5f9; font-size: 1rem;">Cypher Framework</h3>
+            <p style="margin: 0.25rem 0 0; font-size: 0.75rem; color: #94a3b8;">Professional creator tools</p>
+        </div>
+
+        <div style="max-height: 24rem; overflow-y: auto;">
+            <!-- Platforms -->
+            <div style="padding: 0.5rem;">
+                <div
+                    style="padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #d8b4fe; text-transform: uppercase;">
+                    🛠️ Platforms
+                </div>
+
+                <!-- UCP -->
+                <a href="https://ucp.pantheonladderworks.com" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <div>
+                        <div class="title">Unified Creator Platform</div>
+                        <div class="desc">Professional creator tools</div>
+                    </div>
+                </a>
+
+                <!-- Pantheon Site -->
+                <a href="https://pantheonladderworks.org" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    <div>
+                        <div class="title">Pantheon LadderWorks</div>
+                        <div class="desc">The public-facing Stargate</div>
+                    </div>
+                </a>
+
+                <!-- ReFinEd -->
+                <a href="https://refined.pantheonladderworks.com" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <div>
+                        <div class="title">ReFinEd Platform</div>
+                        <div class="desc">Financial literacy & education</div>
+                    </div>
+                </a>
+
+                <!-- Infrastructure -->
+                <a href="https://pantheonladderworks.net" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2Z"></path>
+                        <path d="M12 12v6"></path>
+                        <path d="M12 12H6"></path>
+                        <path d="M12 6v6"></path>
+                        <path d="M18 12h-6"></path>
+                    </svg>
+                    <div>
+                        <div class="title">Infrastructure (.NET)</div>
+                        <div class="desc">Cloud services - Coming Soon</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Support -->
+            <div style="padding: 0.5rem; border-top: 1px solid #334155;">
+                <div
+                    style="padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #d8b4fe; text-transform: uppercase;">
+                    💜 Support & Shop
+                </div>
+
+                <a href="https://www.patreon.com/c/Kode_Animator" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+                        </path>
+                    </svg>
+                    <div>
+                        <div class="title">Support on Patreon</div>
+                        <div class="desc">Support the work & community</div>
+                    </div>
+                </a>
+
+                <a href="https://pantheonladderworks.gumroad.com/" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <div>
+                        <div class="title">Shop on Gumroad</div>
+                        <div class="desc">Tools, kits & digital products</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Connect -->
+            <div style="padding: 0.5rem; border-top: 1px solid #334155;">
+                <div
+                    style="padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #d8b4fe; text-transform: uppercase;">
+                    🔗 Connect
+                </div>
+
+                <a href="https://www.youtube.com/@Kode_Animator" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17">
+                        </path>
+                        <path d="m10 15 5-3-5-3z"></path>
+                    </svg>
+                    <div>
+                        <div class="title">YouTube</div>
+                        <div class="desc">Video tutorials</div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/Pantheon-LadderWorks" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M2 12h20"></path>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    <div>
+                        <div class="title">GitHub</div>
+                        <div class="desc">Open source projects</div>
+                    </div>
+                </a>
+
+                <a href="https://gravatar.com/luminouswildly1e8a4d9e81" target="_blank" class="launcher-item">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <circle cx="12" cy="10" r="3"></circle>
+                        <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path>
+                    </svg>
+                    <div>
+                        <div class="title">Gravatar</div>
+                        <div class="desc">Professional identity</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div
+            style="padding: 0.5rem; background-color: rgba(30, 41, 59, 0.5); border-top: 1px solid #334155; text-align: center;">
+            <p style="margin: 0; font-size: 0.7rem; color: #64748b;">Pantheon LadderWorks • Professional Tools</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .launcher-item {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem;
+        border-radius: 0.375rem;
+        text-decoration: none;
+        transition: background-color 0.2s;
+    }
+
+    .launcher-item:hover {
+        background-color: rgba(168, 85, 247, 0.1);
+    }
+
+    .launcher-item .icon {
+        margin-right: 0.75rem;
+        color: #22d3ee;
+        flex-shrink: 0;
+    }
+
+    .launcher-item .title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #f1f5f9;
+        line-height: 1.2;
+    }
+
+    .launcher-item .desc {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        margin-top: 0.1rem;
+        line-height: 1.2;
+    }
+
+    #launcher-btn:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<script>
+    function toggleLauncher() {
+        const dropdown = document.getElementById('launcher-dropdown');
+        if (dropdown.style.display === 'none') {
+            dropdown.style.display = 'block';
+            // Close when clicking outside
+            document.addEventListener('click', closeLauncherOnClickOutside);
+        } else {
+            dropdown.style.display = 'none';
+            document.removeEventListener('click', closeLauncherOnClickOutside);
+        }
+    }
+
+    function closeLauncherOnClickOutside(event) {
+        const launcher = document.querySelector('.app-launcher');
+        if (!launcher.contains(event.target)) {
+            document.getElementById('launcher-dropdown').style.display = 'none';
+            document.removeEventListener('click', closeLauncherOnClickOutside);
+        }
+    }
+</script>

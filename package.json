@@ -4,8 +4,8 @@
   "description": "Professional AI Development Platform",
   "main": "index.html",
   "scripts": {
-    "dev": "python -m http.server 8080",
-    "build": "echo 'Static site - no build needed'",
+    "dev": "C:\\Ruby33-x64\\bin\\jekyll.bat serve",
+    "build": "C:\\Ruby33-x64\\bin\\jekyll.bat build",
     "deploy": "git push origin main"
   },
   "repository": {

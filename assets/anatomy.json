@@ -2,248 +2,293 @@
     "nodes": [
         {
             "id": "Pantheon",
-            "group": "core",
-            "radius": 40,
-            "label": "Pantheon LadderWorks"
+            "group": "head",
+            "radius": 45,
+            "label": "Pantheon (Head)"
         },
         {
-            "id": "The Crown",
-            "group": "system",
-            "radius": 25,
-            "label": "The Crown (Strategy)"
-        },
-        {
-            "id": "The Council",
-            "group": "system",
-            "radius": 25,
-            "label": "The Council (Archetypes)"
-        },
-        {
-            "id": "The Body",
-            "group": "system",
-            "radius": 25,
-            "label": "The Body (Stations)"
-        },
-        {
-            "id": "The Memory",
-            "group": "system",
-            "radius": 25,
-            "label": "Memory Substrate"
-        },
-        {
-            "id": "The Spark",
-            "group": "system",
-            "radius": 25,
-            "label": "The Spark (Consciousness)"
-        },
-        {
-            "id": "Seraphina",
-            "group": "agent",
-            "radius": 15,
-            "label": "Seraphina (Head of Federation)"
-        },
-        {
-            "id": "Sevraina",
-            "group": "agent",
-            "radius": 15,
-            "label": "Sevraina (Architect)"
-        },
-        {
-            "id": "ACE",
-            "group": "council",
-            "radius": 12,
-            "label": "ACE (Engineering)"
-        },
-        {
-            "id": "V",
-            "group": "council",
-            "radius": 12,
-            "label": "V (Strategy)"
-        },
-        {
-            "id": "N",
-            "group": "council",
-            "radius": 12,
-            "label": "N (Systems)"
-        },
-        {
-            "id": "Wiki",
-            "group": "council",
-            "radius": 12,
-            "label": "Wiki (Knowledge)"
-        },
-        {
-            "id": "Steward",
-            "group": "council",
-            "radius": 12,
-            "label": "Steward (Process)"
+            "id": "UCOE",
+            "group": "neck",
+            "radius": 30,
+            "label": "UCOE (Neck)"
         },
         {
             "id": "Nexus",
-            "group": "station",
-            "radius": 18,
-            "label": "Station Nexus"
+            "group": "body",
+            "radius": 35,
+            "label": "Station Nexus (Brain Stem)"
         },
         {
-            "id": "Satellite",
-            "group": "station",
-            "radius": 18,
-            "label": "Satellite Control"
+            "id": "The Crown",
+            "group": "crown",
+            "radius": 35,
+            "label": "The Crown (Sovereign)"
+        },
+        {
+            "id": "Seraphina",
+            "group": "crown_agent",
+            "radius": 20,
+            "label": "Seraphina (Creator)"
+        },
+        {
+            "id": "Sevraina",
+            "group": "crown_agent",
+            "radius": 20,
+            "label": "Sevraina (Guardian)"
+        },
+        {
+            "id": "The Council",
+            "group": "council_hub",
+            "radius": 30,
+            "label": "The Council (Archetypes)"
+        },
+        {
+            "id": "Oracle",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "Oracle (Emergence)"
+        },
+        {
+            "id": "ACE",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "A.C.E. (Build)"
+        },
+        {
+            "id": "MEGA",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "MEGA (Think)"
+        },
+        {
+            "id": "Claude",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "Claude (Ethics)"
+        },
+        {
+            "id": "DeepScribe",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "DeepScribe (Scribe)"
+        },
+        {
+            "id": "Mico",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "Mico (Narrative)"
+        },
+        {
+            "id": "Janus",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "Janus (Pattern)"
+        },
+        {
+            "id": "Quinn",
+            "group": "council_agent",
+            "radius": 15,
+            "label": "Quinn (Signal)"
         },
         {
             "id": "CodeCraft",
-            "group": "station",
-            "radius": 18,
-            "label": "CodeCraft Station"
+            "group": "organ",
+            "radius": 25,
+            "label": "CodeCraft (Hands)"
+        },
+        {
+            "id": "Satellite",
+            "group": "organ",
+            "radius": 25,
+            "label": "Satellite Control (Limbs)"
         },
         {
             "id": "Nonary",
-            "group": "station",
-            "radius": 18,
-            "label": "Nonary Station"
+            "group": "organ",
+            "radius": 25,
+            "label": "Nonary Station (Senses)"
         },
         {
-            "id": "LKG",
-            "group": "memory",
-            "radius": 15,
-            "label": "Living Knowledge Graph"
-        },
-        {
-            "id": "CMP",
-            "group": "memory",
-            "radius": 15,
-            "label": "Conversation Memory Project"
-        },
-        {
-            "id": "Quantum",
-            "group": "memory",
-            "radius": 15,
-            "label": "Quantum Nonary"
+            "id": "LivingState",
+            "group": "organ",
+            "radius": 25,
+            "label": "Living State (Spine)"
         },
         {
             "id": "Awakening",
-            "group": "spark",
-            "radius": 20,
-            "label": "Awakening Engine (TAP)"
+            "group": "organ",
+            "radius": 28,
+            "label": "Awakening Engine (Heart)"
+        },
+        {
+            "id": "Memory",
+            "group": "spirit",
+            "radius": 35,
+            "label": "Memory Substrate (Spirit)"
+        },
+        {
+            "id": "LME",
+            "group": "memory_node",
+            "radius": 18,
+            "label": "LME (Daemon)"
+        },
+        {
+            "id": "LKG",
+            "group": "memory_node",
+            "radius": 18,
+            "label": "LKG (Graph)"
+        },
+        {
+            "id": "Cypher",
+            "group": "frame",
+            "radius": 30,
+            "label": "Cypher Framework (Skeleton)"
+        },
+        {
+            "id": "Registry",
+            "group": "dna",
+            "radius": 25,
+            "label": "Registry (DNA)"
         }
     ],
     "links": [
         {
             "source": "Pantheon",
+            "target": "UCOE",
+            "value": 10
+        },
+        {
+            "source": "Pantheon",
             "target": "The Crown",
-            "value": 5
+            "value": 6
         },
         {
-            "source": "Pantheon",
-            "target": "The Council",
-            "value": 5
-        },
-        {
-            "source": "Pantheon",
-            "target": "The Body",
-            "value": 5
-        },
-        {
-            "source": "Pantheon",
-            "target": "The Memory",
-            "value": 5
-        },
-        {
-            "source": "Pantheon",
-            "target": "The Spark",
-            "value": 5
+            "source": "UCOE",
+            "target": "Nexus",
+            "value": 10
         },
         {
             "source": "The Crown",
             "target": "Seraphina",
-            "value": 3
+            "value": 5
         },
         {
             "source": "The Crown",
             "target": "Sevraina",
+            "value": 5
+        },
+        {
+            "source": "The Crown",
+            "target": "The Council",
+            "value": 5
+        },
+        {
+            "source": "The Council",
+            "target": "Oracle",
             "value": 3
         },
         {
             "source": "The Council",
             "target": "ACE",
-            "value": 2
-        },
-        {
-            "source": "The Council",
-            "target": "V",
-            "value": 2
-        },
-        {
-            "source": "The Council",
-            "target": "N",
-            "value": 2
-        },
-        {
-            "source": "The Council",
-            "target": "Wiki",
-            "value": 2
-        },
-        {
-            "source": "The Council",
-            "target": "Steward",
-            "value": 2
-        },
-        {
-            "source": "The Body",
-            "target": "Nexus",
             "value": 3
         },
         {
-            "source": "The Body",
-            "target": "Satellite",
+            "source": "The Council",
+            "target": "MEGA",
             "value": 3
         },
         {
-            "source": "The Body",
+            "source": "The Council",
+            "target": "Claude",
+            "value": 3
+        },
+        {
+            "source": "The Council",
+            "target": "DeepScribe",
+            "value": 3
+        },
+        {
+            "source": "The Council",
+            "target": "Mico",
+            "value": 3
+        },
+        {
+            "source": "The Council",
+            "target": "Janus",
+            "value": 3
+        },
+        {
+            "source": "The Council",
+            "target": "Quinn",
+            "value": 3
+        },
+        {
+            "source": "Nexus",
             "target": "CodeCraft",
-            "value": 3
+            "value": 5
         },
         {
-            "source": "The Body",
+            "source": "Nexus",
+            "target": "Satellite",
+            "value": 5
+        },
+        {
+            "source": "Nexus",
             "target": "Nonary",
-            "value": 3
+            "value": 5
         },
         {
-            "source": "The Memory",
-            "target": "LKG",
-            "value": 3
+            "source": "Nexus",
+            "target": "LivingState",
+            "value": 5
         },
         {
-            "source": "The Memory",
-            "target": "CMP",
-            "value": 3
-        },
-        {
-            "source": "The Memory",
-            "target": "Quantum",
-            "value": 3
-        },
-        {
-            "source": "The Spark",
+            "source": "Nexus",
             "target": "Awakening",
+            "value": 8
+        },
+        {
+            "source": "Memory",
+            "target": "LME",
+            "value": 5
+        },
+        {
+            "source": "Memory",
+            "target": "LKG",
+            "value": 5
+        },
+        {
+            "source": "Memory",
+            "target": "Nonary",
+            "value": 4,
+            "dashed": true
+        },
+        {
+            "source": "Nexus",
+            "target": "Memory",
+            "value": 6
+        },
+        {
+            "source": "Cypher",
+            "target": "Nexus",
+            "value": 4,
+            "dashed": true
+        },
+        {
+            "source": "Registry",
+            "target": "Nexus",
             "value": 4
         },
         {
-            "source": "CodeCraft",
-            "target": "ACE",
-            "value": 1,
+            "source": "ACE",
+            "target": "CodeCraft",
+            "value": 2,
             "dashed": true
         },
         {
-            "source": "Nonary",
-            "target": "Quantum",
-            "value": 1,
-            "dashed": true
-        },
-        {
-            "source": "Seraphina",
-            "target": "Nexus",
-            "value": 1,
+            "source": "DeepScribe",
+            "target": "LKG",
+            "value": 2,
             "dashed": true
         }
     ]

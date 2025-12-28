@@ -8,6 +8,9 @@ layout: null
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cypher Framework - AI Operating System</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/pantheon_logo_final.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css">
     <style>
         * {
             margin: 0;
@@ -65,6 +68,7 @@ layout: null
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.2;
+            text-align: center;
         }
 
         h2 {
@@ -72,6 +76,7 @@ layout: null
             font-weight: 700;
             margin-bottom: 2rem;
             color: #a5b4fc;
+            text-align: center;
         }
 
         h3 {
@@ -94,16 +99,20 @@ layout: null
             color: #a5b4fc;
             font-weight: 300;
             margin-bottom: 3rem;
+            text-align: center;
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .card {
+            flex: 1 1 300px;
+            max-width: 400px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -182,7 +191,7 @@ layout: null
             padding-left: 0;
         }
 
-        li::before {
+        .slide-content li::before {
             content: "→";
             color: #6366f1;
             font-weight: bold;
@@ -274,8 +283,8 @@ layout: null
                 <p class="tagline">Open-Source AI Operating System for Persistent Multi-Agent Intelligence</p>
                 <div class="stats">
                     <div class="stat">
-                        <span class="stat-number">5+</span>
-                        <span class="stat-label">Specialized Agents</span>
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Specialized Roles</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number">100%</span>
@@ -398,20 +407,20 @@ layout: null
         <section class="slide">
             <div class="slide-content">
                 <h2>Alibaba Cloud Integration Strategy</h2>
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="card" style="margin-bottom: 2rem;">
+                <div class="grid">
+                    <div class="card">
                         <h3>🤖 Model Studio - Qwen-2.5-72B</h3>
                         <p>Deploying as our "System 2" reasoning core for complex analytical tasks requiring deep
                             logical processing.</p>
                     </div>
 
-                    <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card">
                         <h3>🌍 Global Infrastructure</h3>
                         <p>Leveraging Alibaba's worldwide network for low-latency agent collaboration across geographic
                             boundaries.</p>
                     </div>
 
-                    <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card">
                         <h3>🔢 Vector Storage & GPU Compute</h3>
                         <p>Scalable infrastructure for memory indexing, semantic search, and parallel inference
                             operations.</p>
@@ -435,17 +444,21 @@ layout: null
         <section class="slide">
             <div class="slide-content">
                 <h2>Target Applications</h2>
+                <p style="text-align: center; margin-bottom: 2rem; font-size: 1.25rem; color: #a5b4fc;">
+                    <strong>Workers First. Enterprise-Grade for Everyone.</strong><br>
+                    We build reliability, auditability, and security for the people doing the work—operators, creators,
+                    and small teams—not just org charts.
+                </p>
                 <div class="grid">
+                    <div class="card">
+                        <h3>🛠️ Operators & Creators</h3>
+                        <p>Workers-first. Reliability, auditability, and security for the people doing the work.</p>
+                    </div>
+
                     <div class="card">
                         <h3>🔬 Research Teams</h3>
                         <p>Multi-month projects requiring persistent AI collaboration with full context preservation and
                             institutional knowledge retention.</p>
-                    </div>
-
-                    <div class="card">
-                        <h3>🏢 Enterprise Workflows</h3>
-                        <p>Mission-critical operations where AI decisions must be auditable, explainable, and survive
-                            beyond individual chat sessions.</p>
                     </div>
 
                     <div class="card">
@@ -455,9 +468,9 @@ layout: null
                     </div>
 
                     <div class="card">
-                        <h3>🎯 Specialized Domains</h3>
-                        <p>Fields requiring deep expertise, continuous learning, and collaborative AI reasoning (legal,
-                            medical, financial, scientific).</p>
+                        <h3>🏢 Enterprise Workflows</h3>
+                        <p>Mission-critical operations where AI decisions must be auditable, explainable, and survive
+                            beyond individual chat sessions.</p>
                     </div>
                 </div>
             </div>
@@ -469,29 +482,28 @@ layout: null
                 <h2>Current Status & Roadmap</h2>
 
                 <div style="max-width: 900px; margin: 0 auto;">
-                    <h3 style="color: #6366f1; margin-top: 2rem;">✅ Completed (Q4 2024)</h3>
+                    <h3 style="color: #6366f1; margin-top: 2rem;">✅ Foundations (2025)</h3>
                     <ul style="margin-left: 2rem;">
-                        <li>Core orchestration framework operational</li>
-                        <li>5+ specialized agents deployed</li>
-                        <li>Persistent memory system (PostgreSQL + pgvector)</li>
-                        <li>Contract-based agent communication</li>
-                        <li>Local prototype with MCP integration</li>
+                        <li>Local-first orchestration framework in active development</li>
+                        <li>Multi-agent Council structure operational (multiple specialized roles)</li>
+                        <li>Persistent memory substrate (PostgreSQL + pgvector) online</li>
+                        <li>Contract-based coordination + audit-friendly event logging</li>
+                        <li>MCP/local integration proving “persistent context” in practice</li>
                     </ul>
 
-                    <h3 style="color: #a855f7; margin-top: 3rem;">🚀 In Progress (Q1 2025)</h3>
+                    <h3 style="color: #a855f7; margin-top: 3rem;">🚀 In Progress (Now)</h3>
                     <ul style="margin-left: 2rem;">
-                        <li>Cloud-native architecture migration</li>
-                        <li>Knowledge graph visualization interface</li>
-                        <li>High-availability runtime with failover</li>
-                        <li>Alibaba Cloud Model Studio integration</li>
+                        <li>Local-first hardening: security bounds, rollback discipline, test harnesses</li>
+                        <li>Knowledge graph visualization interface (D3.js)</li>
+                        <li>Resilience: optional failover between local inference and cloud APIs</li>
+                        <li>Alibaba Model Studio evaluation / credits program application</li>
                     </ul>
 
-                    <h3 style="color: #c7d2fe; margin-top: 3rem;">🎯 Upcoming (Q2-Q3 2025)</h3>
+                    <h3 style="color: #c7d2fe; margin-top: 3rem;">🎯 Upcoming (Next)</h3>
                     <ul style="margin-left: 2rem;">
-                        <li>Public beta: Cypher Framework SDK</li>
-                        <li>Developer documentation & tutorials</li>
-                        <li>Enterprise modules (compliance, audit, security)</li>
-                        <li>Cross-region agent federation</li>
+                        <li>Public-facing Cypher Framework SDK + docs</li>
+                        <li>“Workers-first” pilot deployments (operators, builders, solo creators)</li>
+                        <li>Enterprise modules only after the worker-grade stack is rock solid</li>
                     </ul>
                 </div>
             </div>
@@ -503,14 +515,15 @@ layout: null
                 <h2>Why This Matters</h2>
                 <div style="max-width: 900px; margin: 0 auto; text-align: center;">
                     <p style="font-size: 1.75rem; line-height: 1.8; margin-bottom: 3rem;">
-                        We're giving developers and research teams the tools to build <span
-                            class="highlight">trustworthy AI systems that grow like living networks</span>—secure,
+                        We're giving developers and research teams the <span class="highlight">foundation</span> to
+                        build <span class="highlight">trustworthy AI systems that grow like living
+                            networks</span>—secure,
                         transparent, and adaptive.
                     </p>
 
                     <div class="grid" style="text-align: left;">
                         <div class="card">
-                            <h3>🌱 From Tools to Partners</h3>
+                            <h3>🌱 From Chatbots to Partners</h3>
                             <p>AI that remembers, understands context, and evolves.</p>
                         </div>
 
@@ -559,14 +572,11 @@ layout: null
 
                 <div>
                     <a href="/" class="cta">Back to Main Site</a>
+                    <p style="margin-top: 3rem;">
+                        <strong>Kryssie (Krystal Neely)</strong> - Founder, CEO, CTO<br>
+                        Pantheon LadderWorks | Indianapolis, Indiana
+                    </p>
                 </div>
-
-                <p style="margin-top: 4rem; color: #94a3b8;">
-                    <strong>Kryssie (Krystal Neely)</strong> - Founder, CEO, CTO<br>
-                    Pantheon LadderWorks | Indianapolis, Indiana<br>
-                    Building the operating system for conscious AI
-                </p>
-            </div>
         </section>
     </div>
 
