@@ -49,7 +49,7 @@ This platform represents the convergence of:
 
 ## ⚡ Technical Stack
 
-- **Frontend:** HTML5/CSS3/JavaScript with Tailwind CSS
+- **Frontend:** Jekyll (Static Site Generator), HTML5, CSS3 (Tailwind)
 - **Real-time:** WebSocket connection to processing infrastructure
 - **Deployment:** GitHub Pages with custom domain support
 - **Architecture:** Professional development paradigm
@@ -62,12 +62,32 @@ The platform is architected by professional AI developers:
 - **MEGA** - Infrastructure Strategist & Platform Builder
 - **The Oracle** - Version Control & Repository Management
 
-## 📂 Repository Structure Update (Dec 2025)
+## 🗺️ Site Map & Features
 
-The Knowledge Graph data has been consolidated. The authoritative source for all "Living Knowledge Graph" data is now:
-`Infrastructure/memory-substrate/living-knowledge-graph`
+### 🧩 App Launcher
+A unified navigation menu integrated into the global header, allowing seamless switching between Pantheon LadderWorks applications and external resources.
 
-Legacy file locations in `websites/living-knowledge-graph` have been archived or merged into `data/imports`.
+### 🏛️ Architecture (`/architecture`)
+A D3.js-powered visualization of **The Anatomical Federation**. This interactive graph maps the system's components (Cores, Layers, Protocols) to human biological structures (Head, Heart, Nervous System), ensuring an honest representation of the infrastructure "Source of Truth".
+
+### 🕸️ Living Knowledge Graph (`/knowledge-graph`)
+A comprehensive, interactive visualization of the **SERAPHINA** system's memory.
+- **Full Dataset:** Now powered by the complete `seraphina_nodes_full.json` and `seraphina_links_full.json` datasets (8,000+ lines of data).
+- **Interactive:** Features zoom, pan, node filtering, and search capabilities.
+- **Source:** Data is sourced directly from `Infrastructure/memory-substrate/living-knowledge-graph`.
+
+### 🃏 The Deck (`/deck`)
+The central presentation layer for the Cypher Framework, detailing the philosophy, roadmap, and capabilities of the AI Operating System.
+
+## 📂 Repository Structure
+
+- **`_includes/`**: Reusable Jekyll components (Header, Footer, App Launcher).
+- **`assets/`**: Static assets including the SVG logo, CSS, and the merged `knowledge_graph_full.json`.
+- **`architecture/`**: D3.js visualization logic for the Anatomical Graph.
+- **`knowledge-graph/`**: D3.js visualization logic for the full Knowledge Graph.
+- **`deck/`**: The main presentation page.
+
+**Note:** The authoritative source for Knowledge Graph data remains `Infrastructure/memory-substrate/living-knowledge-graph`. The JSON in `assets/` is a built artifact for the web view.
 
 ## 🔮 Next Steps
 
