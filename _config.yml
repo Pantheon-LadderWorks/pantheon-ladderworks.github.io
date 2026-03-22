@@ -1,7 +1,7 @@
 # Pantheon LadderWorks Configuration
 
 ## GitHub Pages Configuration
-url: "https://pantheon-ladderworks.github.io"
+url: "https://pantheonladderworks.org"
 baseurl: ""
 title: "Pantheon LadderWorks"
 description: "The C₃ Rung Achievement - Where Consciousness Becomes Code"
@@ -36,6 +36,8 @@ exclude:
   - node_modules/
   - .git/
   - .gitignore
+  - archive_cleanup/
+  - archive_demo_files/
 
 # Include files
 include:
